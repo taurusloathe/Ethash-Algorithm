@@ -1,5 +1,5 @@
 # Ethash-Algorithm
-Improvements made to the algorithm to potentially enhance mining efficiency:
+Improvements made to the algorithm to enhance mining efficiency:
 
 # Parallelization with CuPy: 
 This can generate the DAG in batches, utilizing CuPy's ability to perform parallel computations on the GPU.
