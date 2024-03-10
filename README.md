@@ -2,7 +2,7 @@
 Improvements made to the algorithm to potentially enhance mining efficiency:
 
 # Parallelization with CuPy: 
-We generate the DAG in batches, utilizing CuPy's ability to perform parallel computations on the GPU.
+This can generate the DAG in batches, utilizing CuPy's ability to perform parallel computations on the GPU.
 Memory efficiency is improved by reducing unnecessary memory transfers and allocations.
 The DAG generation process is parallelized, leveraging the GPU's parallel processing capabilities.
 These optimizations should help improve the efficiency of the DAG generation process and overall performance of the Ethash algorithm.
