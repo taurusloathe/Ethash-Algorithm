@@ -16,18 +16,19 @@ def fnv(seed, data):
 
 def generate_dag(epoch):
     seed = b'\x00' * 32
-    for i in range(epoch // 30000):
-        seed = keccak256(seed)
-    
     dag_size = 2**26
-    dag = cp.empty((dag_size // 128, 128), dtype=np.uint8)
-    for i in range(dag_size // 128):
-        mix = np.empty(128, dtype=np.uint8)
-        for j in range(4):
-            mix[j * 32:(j + 1) * 32] = keccak256(seed)
-            seed = keccak256(seed)
-        dag[i] = mix
-    return dag
+    num_batches = dag_size // (128 * 128)
+    seed = cp.array(seed, dtype=cp.uint8)
+    for _ in range(epoch // 30000):
+        seed = keccak256(seed)
+    seed = cp.tile(seed, (num_batches, 1))
+
+    dag = cp.empty((num_batches, 128, 128), dtype=cp.uint8)
+    for i in range(128):
+        seed = keccak256(seed)
+        dag[:, i, :] = seed
+
+    return dag.reshape(dag_size, 128)
 
 def generate_cache(epoch, miner_address):
     seed = b'\x00' * 32
