@@ -13,4 +13,4 @@ Implementation of GPU acceleration using CUDA, which allows us to offload comput
 # Optimization of Hash Functions:
 Investigates faster hash functions or algorithms that can provide similar cryptographic properties with better performance.
 
-Be sure to update the network hashrate amd the target block time as needed. Note that implementing GPU acceleration requires CUDA-compatible hardware and the CuPy library installed, which provides NumPy-like syntax for GPU computing. The performance gains may vary depending on hardware configuration.
+Be sure to update the network hashrate and the target block time as needed. Note that implementing GPU acceleration requires CUDA-compatible hardware and the CuPy library installed, which provides NumPy-like syntax for GPU computing. The performance gains may vary depending on hardware configuration.
